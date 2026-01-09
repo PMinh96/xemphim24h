@@ -1,0 +1,32 @@
+version: '3.9'
+
+services:
+  tender-sp-frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: "0.5"
+    container_name: tender-sp-frontend
+    restart: always
+    environment:
+      - NODE_ENV=production
+    # ports:
+    #   - "3000:80"
+    restart: always
+    networks:
+      - traefik-net
+    # labels:
+    #   - 'traefik.enable=true'
+    #   - 'traefik.http.routers.tender-sp-frontend.rule=Host(`tender-fe.arcanic.ai`)'
+    #   - 'traefik.http.routers.tender-sp-frontend.entrypoints=https'
+    #   - 'traefik.http.services.tender-sp-frontend.loadbalancer.server.port=80'
+    #   - 'traefik.http.routers.tender-sp-frontend.tls=true'
+    #   - 'traefik.http.routers.tender-sp-frontend.tls.certresolver=letsencrypt'
+
+networks:
+  traefik-net:
+    external: true

@@ -1,0 +1,22 @@
+<svg width="320" height="90" viewBox="0 0 320 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g transform="translate(10, 10)">
+        <path d="M5 40 C 20 15, 60 15, 75 40 C 60 65, 20 65, 5 40 Z" stroke="#5c2f9bff" stroke-width="3" fill="none"/>
+        
+        <circle cx="40" cy="40" r="18" fill="#ffffffff" fill-opacity="0.2" stroke="#5c2f9bff" stroke-width="2"/>
+        <line x1="40" y1="40" x2="40" y2="28" stroke="#5c2f9bff" stroke-width="2" stroke-linecap="round"/>
+        <line x1="40" y1="40" x2="48" y2="48" stroke="#5c2f9bff" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="40" cy="25" r="1.5" fill="#5c2f9bff"/>
+        <circle cx="55" cy="40" r="1.5" fill="#5c2f9bff"/>
+        <circle cx="40" cy="55" r="1.5" fill="#5c2f9bff"/>
+        <circle cx="25" cy="40" r="1.5" fill="#5c2f9bff"/>
+    </g>
+
+    <g transform="translate(90, 55)">
+        <text font-family="'sans-serif', Nunito" font-weight="800" font-size="26" fill="#300a5a">
+            ĐỌC TRUYỆN
+        </text>
+        <text x="100" y="24" font-family="'sans-serif', Nunito" font-weight="600" font-size="16" fill="#5c2f9bff" letter-spacing="3">
+            MỚI 24H
+        </text>
+    </g>
+</svg>
