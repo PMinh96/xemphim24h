@@ -20,11 +20,11 @@ export default function AppHeader() {
 
                 {/* MENU CENTER */}
                 <nav className="absolute left-1/2 -translate-x-1/2 flex gap-6 text-lg font-medium text-[#300a5a]">
-                    <a href="/phim-le" className="hover:text-[#5c2f9b] transition-colors duration-200">
+                    <a href="/app/odds" className="hover:text-[#5c2f9b] transition-colors duration-200">
                         Truyện Lẻ
                     </a>
 
-                    <a href="/phim-bo" className="hover:text-[#5c2f9b] transition-colors duration-200">
+                    <a href="/app/practice" className="hover:text-[#5c2f9b] transition-colors duration-200">
                         Truyện Bộ
                     </a>
 

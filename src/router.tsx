@@ -70,7 +70,21 @@ export const createAppRouter = (queryClient: QueryClient) =>
                   convert(queryClient),
                 ),
             },
-            
+            {
+              path: 'odds',
+              lazy: () =>
+                import('./routes/app/odd/odd-list-route').then(
+                  convert(queryClient),
+                ),
+            },
+            {
+              path: 'practice',
+              lazy: () =>
+                import('./routes/app/practice/practice-list-route').then(
+                  convert(queryClient),
+                ),
+            },
+
             {
               path: 'dashboard',
               lazy: () =>
