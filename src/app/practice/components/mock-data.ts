@@ -1,27 +1,52 @@
-// mock-data.ts
-export const mockMovie = {
-  title: 'Sát Thủ John Wick 4',
-  originalTitle: 'John Wick: Chapter 4',
-  year: 2023,
-  duration: '120 phút',
-  rating: 8.9,
-  genres: ['Hành Động', 'Hình Sự'],
-  country: 'Mỹ',
-  status: 'Hoàn Tất',
-  poster: '/demo/johnwick.jpg',
-  description:
-    'John Wick tiếp tục cuộc chiến chống lại High Table. Với kẻ thù ngày càng mạnh...',
-};
+/* ================= MOCK DATA ================= */
 
-export const mockEpisodes = Array.from({ length: 5 }).map((_, i) => ({
-  id: i + 1,
-  name: `Tập ${i + 1}`,
-}));
-
-export const mockServers = ['Server 1', 'Server 2'];
-
-export const relatedMovies = Array.from({ length: 4 }).map((_, i) => ({
-  title: `Phim Liên Quan ${i + 1}`,
-  poster: '/demo/dune.jpg',
-  rating: 4,
-}));
+export const mockNovels = [
+  {
+    id: 1,
+    title: 'Truyện Bộ 1',
+    poster: '/demo/dune.jpg',
+    rating: 5,
+    type: 'novel',
+    label: 'Đang cập nhật',
+  },
+  {
+    id: 2,
+    title: 'Truyện Bộ 2',
+    poster: '/demo/dune.jpg',
+    rating: 4,
+    type: 'novel',
+    label: 'Đang cập nhật',
+  },
+  {
+    id: 3,
+    title: 'Truyện Bộ 3',
+    poster: '/demo/dune.jpg',
+    rating: 5,
+    type: 'novel',
+    label: 'Hoàn thành',
+  },
+  {
+    id: 4,
+    title: 'Truyện Bộ 4',
+    poster: '/demo/dune.jpg',
+    rating: 4,
+    type: 'novel',
+    label: 'Đang cập nhật',
+  },
+  {
+    id: 5,
+    title: 'Truyện Bộ 5',
+    poster: '/demo/dune.jpg',
+    rating: 5,
+    type: 'novel',
+    label: 'Đang cập nhật',
+  },
+  {
+    id: 6,
+    title: 'Truyện Bộ 6',
+    poster: '/demo/dune.jpg',
+    rating: 4,
+    type: 'novel',
+    label: 'Hoàn thành',
+  },
+];

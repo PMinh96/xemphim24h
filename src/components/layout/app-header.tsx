@@ -77,9 +77,12 @@ export default function AppHeader() {
                         placeholder="Tìm phim..."
                         className="h-9 w-44 rounded-md border border-[#300a5a]/30 bg-white px-2 text-sm text-[#300a5a] placeholder:text-[#aaa] outline-none focus:ring-1 focus:ring-[#5c2f9b]"
                     />
-                    <button className="h-9 rounded-md bg-[#300a5a] px-4 text-white font-medium hover:bg-[#5c2f9b] transition-colors duration-200">
-                        Đăng nhập
-                    </button>
+                    <Link 
+                        to="/app/login"
+                        className="h-9 rounded-md bg-[#300a5a] px-4 text-white font-medium hover:bg-[#5c2f9b] transition-colors duration-200 flex items-center justify-center"
+                    >
+                        Đang nhập
+                    </Link>
                 </div>
             </div>
         </header>

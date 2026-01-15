@@ -10,6 +10,7 @@ export interface Movie {
   status: string;
   poster: string;
   backdrop: string;
+  description?: string;
 }
 
 interface MovieInfoProps {
@@ -18,7 +19,7 @@ interface MovieInfoProps {
 
 export const MovieInfo = ({ movie }: MovieInfoProps) => {
   return (
-    <div className="flex gap-4">
+    <div className="flex flex-col gap-4">
       {/* POSTER */}
       {/* <img
         src={movie.poster}
@@ -52,6 +53,14 @@ export const MovieInfo = ({ movie }: MovieInfoProps) => {
           ))}
         </div>
       </div>
+
+      {/* MOVIE DESCRIPTION */}
+      {movie.description && (
+        <div className="mt-4">
+          <h2 className="mb-2 text-lg font-semibold">Nội dung phim</h2>
+          <p className="text-sm text-gray-700">{movie.description}</p>
+        </div>
+      )}
     </div>
   );
 };

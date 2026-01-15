@@ -83,8 +83,32 @@ export const VideoPlayer = ({
     loadVideo(src, false);
   };
 
+  // Ẩn menu button trong video controls
+  useEffect(() => {
+    if (!videoRef.current) return;
+
+    const video = videoRef.current;
+    const style = document.createElement('style');
+    style.textContent = `
+      video::-webkit-media-controls-panel button:last-child {
+        display: none !important;
+      }
+      video::-webkit-media-controls-panel button[aria-label*="menu" i],
+      video::-webkit-media-controls-panel button[aria-label*="settings" i],
+      video::-webkit-media-controls-panel button[title*="menu" i],
+      video::-webkit-media-controls-panel button[title*="settings" i] {
+        display: none !important;
+      }
+    `;
+    document.head.appendChild(style);
+
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
+
   return (
-    <div className="relative aspect-video w-full bg-black">
+    <div className="relative aspect-video w-full bg-black overflow-hidden">
       <video
         ref={videoRef}
         poster={!isAdPlaying ? poster : undefined}
@@ -92,6 +116,7 @@ export const VideoPlayer = ({
         playsInline
         preload="metadata"
         className="h-full w-full object-contain"
+        style={{ zIndex: 1 }}
       />
 
       {/* ADS OVERLAY */}

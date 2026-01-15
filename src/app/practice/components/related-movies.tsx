@@ -14,7 +14,7 @@ export const RelatedMovies = ({ movies }: RelatedMoviesProps) => {
     <div className="mt-8">
       <h2 className="mb-4 text-lg font-semibold">Phim liên quan</h2>
 
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-6">
+      <div className="grid grid-cols-4 gap-4 sm:grid-cols-4 lg:grid-cols-4">
         {movies.map((movie) => (
           <div key={movie.id} className="cursor-pointer">
             <img

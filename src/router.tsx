@@ -57,6 +57,13 @@ export const createAppRouter = (queryClient: QueryClient) =>
                 ),
             },
             {
+              path: 'novel-list/:type',
+              lazy: () =>
+                import('./routes/app/novel/novel-list-route').then(
+                  convert(queryClient),
+                ),
+            },
+            {
               path: 'watch/:id',
               lazy: () =>
                 import('./routes/app/watch/watch-movie').then(
@@ -66,7 +73,14 @@ export const createAppRouter = (queryClient: QueryClient) =>
             {
               path: 'novel/:id',
               lazy: () =>
-                import('./routes/app/novel/novel-list-route').then(
+                import('./routes/app/novel/novel-detail-route').then(
+                  convert(queryClient),
+                ),
+            },
+            {
+              path: 'read/:id/:chapterId',
+              lazy: () =>
+                import('./routes/app/read/read-novel').then(
                   convert(queryClient),
                 ),
             },
@@ -89,6 +103,20 @@ export const createAppRouter = (queryClient: QueryClient) =>
               path: 'dashboard',
               lazy: () =>
                 import('./routes/app/home').then(
+                  convert(queryClient),
+                ),
+            },
+            {
+              path: 'login',
+              lazy: () =>
+                import('./routes/app/login/login-route').then(
+                  convert(queryClient),
+                ),
+            },
+            {
+              path: 'register',
+              lazy: () =>
+                import('./routes/app/register/register-route').then(
                   convert(queryClient),
                 ),
             },

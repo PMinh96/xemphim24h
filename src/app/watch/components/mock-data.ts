@@ -20,7 +20,7 @@ export const mockEpisodes = Array.from({ length: 5 }).map((_, i) => ({
 
 export const mockServers = ['Server 1', 'Server 2'];
 
-export const relatedMovies = Array.from({ length: 4 }).map((_, i) => ({
+export const relatedMovies = Array.from({ length: 6 }).map((_, i) => ({
   title: `Phim Liên Quan ${i + 1}`,
   poster: '/demo/dune.jpg',
   rating: 4,

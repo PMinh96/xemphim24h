@@ -1,10 +1,10 @@
-import MovieList from "@/src/app/movies/page";
+import NovelList from "@/src/app/novel-list/page";
 import { ContentLayout } from "@/src/components/layout";
 
-export default function MovieListRoute() {
+export default function NovelListRoute() {
   return (
     <ContentLayout title="">
-      <MovieList />
+      <NovelList />
     </ContentLayout>
   );
 }
