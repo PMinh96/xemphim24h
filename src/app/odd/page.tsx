@@ -1,42 +1,9 @@
 import { useParams } from 'react-router-dom';
 
-import { VideoPlayer } from './components/video-player';
-import { MovieInfo } from './components/movie-info';
-import { EpisodeList } from './components/episode-list';
-import { ServerSwitch } from './components/server-switch';
-import { MovieDescription } from './components/movie-description';
-import { RelatedMovies } from './components/related-movies';
-
-/* ================= MOCK DATA ================= */
-
-const mockMovie = {
-  id: 'john-wick-4',
-  title: 'SÁT THỦ JOHN WICK 4',
-  originalTitle: 'JOHN WICK: CHAPTER 4',
-  rating: 8.9,
-  year: 2023,
-  duration: '220 Phút',
-  genres: ['Hành Động', 'Hình Sự'],
-  country: 'Mỹ',
-  status: 'Hoàn Tất',
-  poster: '/demo1/john-wick.jpg',
-  backdrop: '/demo/john-wick-bg.jpg',
-};
-
-const mockEpisodes = [
-  { id: 1, label: 'Tập 1' },
-  { id: 2, label: 'Tập 2' },
-  { id: 3, label: 'Tập 3' },
-];
-
-const mockServers = ['Server 1', 'Server 2'];
-
-const mockRelatedMovies = Array.from({ length: 4 }).map((_, i) => ({
-  id: i,
-  title: `Phim Liên Quan ${i + 1}`,
-  poster: '/demo/dune.jpg',
-  rating: 4,
-}));
+import { SectionBlock } from '@/src/components/movie/section-block';
+import { NovelGrid } from '@/src/components/novel/novel-grid';
+import { AppFooter } from '@/src/components/layout';
+import { mockNovels } from './components/mock-data';
 
 /* ================= PAGE ================= */
 
@@ -44,8 +11,42 @@ export default function Odds() {
   const { slug } = useParams();
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-6">
-      <h1>đây là danh sách truyện lẻ</h1>
+    <div className="mx-auto max-w-6xl px-4 py-6 bg-gray-900">
+      <div className='flex justify-between items-center'> 
+        <a href="" className='text-xl font-bold underline text-red-500 mp-4 mb-4'>Truyện Lẻ hot</a>
+        <select name="" id="" className='border border-gray-600 rounded-md p-2 bg-gray-800 text-white'>
+        <option value="1"> Tất cả</option>
+        <option value="1"> Hành Động</option>
+        <option value="1"> Ngôn Tình</option>
+        <option value="1"> Kinh Dị</option>
+        <option value="1"> Cổ Tích</option>
+        </select>
+      </div>
+      <hr className='mt-2 border-gray-700' />
+
+      <div className="border-l border-r border-gray-700">
+        <div className="mx-auto max-w-[1440px]">
+          <div className='bg-gray-800 p-4'>
+            <SectionBlock title="Truyện Mới Cập Nhật" moreHref="/app/novel-list/new">
+              <NovelGrid novels={mockNovels} />
+            </SectionBlock>
+          </div>
+          <div className='bg-gray-800 p-4'>
+            <SectionBlock title="Truyện Bộ Hot" moreHref="/app/novel-list/recommendations">
+              <NovelGrid novels={mockNovels} />
+            </SectionBlock>
+          </div>
+          <div className='bg-gray-800 p-4'>
+            <SectionBlock title="Truyện đã hoàn thành" moreHref="/app/novel-list/series">
+              <NovelGrid
+                novels={mockNovels.map((m) => ({ ...m, isAd: true }))}
+              />
+            </SectionBlock>
+          </div>
+
+          <AppFooter />
+        </div>
+      </div>
     </div>
   );
 }

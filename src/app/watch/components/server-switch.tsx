@@ -4,7 +4,7 @@ interface ServerSwitchProps {
 
 export const ServerSwitch = ({ servers }: ServerSwitchProps) => {
   return (
-    <div className="mb-4 flex gap-2">
+    <div className="mb-4 flex gap-2 mt-2 text-center">
       {servers.map((server) => (
         <button
           key={server}

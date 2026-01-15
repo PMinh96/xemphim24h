@@ -1,7 +1,7 @@
 // src/components/movie/movie-card.tsx
 import { Link } from 'react-router-dom';
 
-type MovieCardProps = {
+type NovelCardProps = {
   id: number;
   title: string;
   poster: string;
@@ -11,7 +11,7 @@ type MovieCardProps = {
   type?: string;
 };
 
-export const MovieCard = ({
+export const NovelCard = ({
   id,
   title,
   poster,
@@ -19,7 +19,7 @@ export const MovieCard = ({
   label = 'Vietsub',
   isAd,
   type,
-}: MovieCardProps) => {
+}: NovelCardProps) => {
   return (
     <Link
       to={`/app/${type}/${id}`}

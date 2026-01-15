@@ -13,13 +13,13 @@ export const SectionBlock = ({
   return (
     <section className="">
       <div className="mb-3 flex items-center justify-between">
-        <h2 className="text-lg font-bold text-gray-800">
+        <h2 className="text-lg font-bold text-white">
           {title}
         </h2>
         {moreHref && (
           <a
             href={moreHref}
-            className="text-sm text-blue-600 hover:underline"
+            className="text-sm text-blue-400 hover:text-blue-300 hover:underline"
           >
             Xem thêm →
           </a>

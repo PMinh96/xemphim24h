@@ -19,17 +19,27 @@ type Movie = {
   label?: string;
   isAd?: boolean;
   type?: string;
+  slice?: number;
 };
-
-
 
 type MovieGridProps = {
   movies: Movie[];
   onclick?: (movie: movie) => void;
+  slice?: number;
 };
 
-export const MovieGrid = ({ movies }: MovieGridProps) => {
-  const displayedMovies = movies.slice(0, 5);
+export const MovieGrid = ({ movies, slice }: MovieGridProps) => {
+  let displayedMovies: Movie[] = [];
+  if(!slice) {
+     displayedMovies = movies;
+  }
+  else if(slice) {
+     displayedMovies = movies.slice(0, slice);
+  }
+  else {
+     displayedMovies = movies.slice(0, 5);
+  }
+  // const displayedMovies = movies.slice(0, 5);
   return (
     <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
       {displayedMovies.map((movie, index) => (

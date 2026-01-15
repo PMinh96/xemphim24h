@@ -24,9 +24,9 @@ export default function MovieList() {
   const totalPages = 5;
 
   return (
-    <div className="border-l border-r border-gray-300">
+    <div className="border-l border-r border-gray-700 bg-gray-900">
       <div className="mx-auto max-w-[1440px] px-4 py-6">
-        <h1 className="mb-4 text-xl font-bold">
+        <h1 className="mb-4 text-xl font-bold text-white">
           {titleMap[type ?? ''] ?? 'Danh sách phim'}
         </h1>
 
