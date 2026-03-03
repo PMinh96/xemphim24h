@@ -63,6 +63,13 @@ export const createAppRouter = (queryClient: QueryClient) =>
                   convert(queryClient),
                 ),
             },
+                        {
+              path: 'comic-list/:type',
+              lazy: () =>
+                import('./routes/app/comic/comic-list-route').then(
+                  convert(queryClient),
+                ),
+            },
             {
               path: 'watch/:id',
               lazy: () =>

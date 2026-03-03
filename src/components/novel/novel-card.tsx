@@ -2,13 +2,15 @@
 import { Link } from 'react-router-dom';
 
 type NovelCardProps = {
-  id: number;
+  id: string;
   title: string;
-  poster: string;
+  poster: string | null;
   rating?: number;
-  label?: string; // Vietsub / Thuyết minh
+  label?: string;
   isAd?: boolean;
   type?: string;
+  slug?: string;
+  chapters: any[];
 };
 
 export const NovelCard = ({
@@ -19,6 +21,8 @@ export const NovelCard = ({
   label = 'Vietsub',
   isAd,
   type,
+  chapters,
+  slug,
 }: NovelCardProps) => {
   return (
     <Link
@@ -33,7 +37,7 @@ export const NovelCard = ({
       )}
 
       <img
-        src={poster}
+        src={`http://localhost:3111${poster || '/demo/default-novel.jpg'}`}
         alt={title}
         className="h-[260px] w-full object-cover transition-transform group-hover:scale-105"
       />

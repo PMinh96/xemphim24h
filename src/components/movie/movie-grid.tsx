@@ -1,35 +1,17 @@
 // src/components/movie/movie-grid.tsx
+import { ShortFilm } from '@/src/app/movies/api/get-list-film';
 import { MovieCard } from './movie-card';
 
-interface movie {
-  id: string | number;
-  title: string;
-  poster: string;
-  rating?: number;
-  label?: string;
-  isAd?: boolean;
-  type?: string;
-}
 
-type Movie = {
-  id: number;
-  title: string;
-  poster: string;
-  rating?: number;
-  label?: string;
-  isAd?: boolean;
-  type?: string;
-  slice?: number;
-};
 
 type MovieGridProps = {
-  movies: Movie[];
-  onclick?: (movie: movie) => void;
+  movies: ShortFilm[];
+  onclick?: (movie: ShortFilm) => void;
   slice?: number;
 };
 
 export const MovieGrid = ({ movies, slice }: MovieGridProps) => {
-  let displayedMovies: Movie[] = [];
+  let displayedMovies: ShortFilm[] = [];
   if(!slice) {
      displayedMovies = movies;
   }
@@ -48,3 +30,4 @@ export const MovieGrid = ({ movies, slice }: MovieGridProps) => {
     </div>
   );
 };
+

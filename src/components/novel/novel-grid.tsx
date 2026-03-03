@@ -1,36 +1,66 @@
-// src/components/novel/novel-grid.tsx
-import { NovelCard } from './novel-card';
 
-interface Novel {
-  id: number;
+import { NovelCard } from './novel-card';
+import { MediaCard } from '@/types/media';
+
+export interface BaseMedia {
+  id: string;
   title: string;
-  poster: string;
-  rating?: number;
-  label?: string;
-  isAd?: boolean;
-  type?: string;
+  slug: string;
+  poster: string | null;
+  author: string;
+  genres: string[];
+  totalChapters: number;
+  createdAt: string;
+  updatedAt: string;
+  chapters: any[];
+}
+
+export interface Novel extends BaseMedia {
+  originalTitle: string | null;
+  type: string;
+  description: string | null;
+  views: number;
+  isPublished: boolean;
+  rating: number;
+  label: string;
+}
+
+export interface PaginatedResponse<T> {
+  data: T[];
+  total: number;
+  page: number;
+  limit: number;
+  totalPages: number;
+}
+
+export interface Comic extends BaseMedia {
+  coverImage: string | null;
 }
 
 type NovelGridProps = {
   novels: Novel[];
-  onclick?: (novel: Novel) => void;
+  onclick?: (novel: MediaCard) => void;
   slice?: number;
 };
 
-export const NovelGrid = ({ novels, slice }: NovelGridProps) => {
-  let displayedNovels: Novel[] = [];
-  if (!slice) {
-    displayedNovels = novels;
-  } else if (slice) {
-    displayedNovels = novels.slice(0, slice);
-  } else {
-    displayedNovels = novels.slice(0, 5);
-  }
-  
+type MediaGridProps<T extends BaseMedia> = {
+  items: T[];
+  onClick?: (item: T) => void;
+  slice?: number;
+};
+
+export const NovelGrid = <T extends BaseMedia>({
+  items,
+  slice,
+}: MediaGridProps<T>) => {
+  const displayedItems = slice
+    ? items.slice(0, slice)
+    : items;
+
   return (
     <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-      {displayedNovels.map((novel) => (
-        <NovelCard key={novel.id} {...novel} />
+      {displayedItems.map((item) => (
+        <NovelCard key={item.id} {...item} />
       ))}
     </div>
   );

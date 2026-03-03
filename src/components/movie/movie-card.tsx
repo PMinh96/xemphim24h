@@ -1,44 +1,75 @@
-// src/components/movie/movie-card.tsx
 import { Link } from 'react-router-dom';
+import { useRef } from 'react';
+
+export interface ShortFilmChapter {
+  images: string[];
+}
 
 type MovieCardProps = {
-  id: number;
+  id: string;
   title: string;
-  poster: string;
-  rating?: number;
-  label?: string; // Vietsub / Thuyết minh
-  isAd?: boolean;
+  poster: string | null;
+  chapters: ShortFilmChapter[];
   type?: string;
+  rating?: number;
+  label?: string;
+  isAd?: boolean;
 };
 
 export const MovieCard = ({
   id,
   title,
-  poster,
+  chapters,
+  type = 'short-film',
   rating = 5,
   label = 'Vietsub',
-  isAd,
-  type,
+  isAd = false,
 }: MovieCardProps) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const previewVideo = chapters?.[0]?.images?.[0]
+    ? `http://localhost:3111${chapters[0].images[0]}`
+    : null;
+
+  const handleEnter = () => {
+    videoRef.current?.play();
+  };
+
+  const handleLeave = () => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+    }
+  };
   return (
     <Link
       to={`/app/${type}/${id}`}
-      className="group relative block overflow-hidden rounded-md bg-gray-600 shadow transition hover:shadow-lg hover:bg-gray-500"
+      onMouseEnter={handleEnter}
+      onMouseLeave={handleLeave}
+      className="group relative block overflow-hidden rounded-md bg-gray-700 shadow transition hover:shadow-lg"
     >
-      {/* BADGE */}
       {isAd && (
-        <span className="absolute left-2 top-2 z-10 rounded bg-red-600 px-2 py-0.5 text-xs font-bold text-white">
+        <span className="absolute left-2 top-2 z-20 rounded bg-red-600 px-2 py-0.5 text-xs font-bold text-white">
           QUẢNG CÁO
         </span>
       )}
 
-      <img
-        src={poster}
-        alt={title}
-        className="h-[260px] w-full object-cover transition-transform group-hover:scale-105"
-      />
+      {previewVideo ? (
+        <video
+          ref={videoRef}
+          src={previewVideo}
+          muted
+          playsInline
+          preload="metadata"
+          className="h-[260px] w-full object-cover"
+        />
+      ) : (
+        <div className="h-[260px] w-full bg-gray-800 flex items-center justify-center text-gray-400">
+          No Preview
+        </div>
+      )}
 
-      <div className="p-2">
+      <div className="relative z-10 p-2 bg-gradient-to-t from-black/60 to-transparent">
         <h3 className="line-clamp-1 text-sm font-semibold text-white">
           {title}
         </h3>

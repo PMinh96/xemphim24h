@@ -1,4 +1,3 @@
-// src/components/section/section-block.tsx
 type SectionBlockProps = {
   title: string;
   children: React.ReactNode;
